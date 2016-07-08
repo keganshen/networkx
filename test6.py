@@ -3,6 +3,13 @@ import csv
 import networkx as nx
 import matplotlib.pyplot as plt
 
+g=nx.Graph()
+g.add_edge(u'张三',u'李四')
+g.add_edge(u'张三',u'王五')
+nx.draw_networkx(g)
+plt.show()
+
+'''
 G=nx.DiGraph()
 
 reader=csv.reader(file('sing.csv','rb'))
@@ -19,5 +26,6 @@ for row in reader:
 
 #print nx.degree(G)
 pos = nx.random_layout(G)
-nx.draw(G,pos,node_size=0,font_size=12)
+nx.draw_networkx(G,pos)
 plt.show()
+'''
