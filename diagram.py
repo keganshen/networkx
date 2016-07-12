@@ -4,20 +4,20 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.Graph()
-DG = nx.DiGraph()
+DG = nx.Graph()
 
 #参数h决定关联度（递归次数）
 def howdeep(selected_nodes,h):
     if h > 0:
         h -= 1
-        for each_item in G.neighbors(selected_nodes):
+        for each_item in nx.all_neighbors(G,selected_nodes):
             DG.add_edge(each_item,selected_nodes)
             howdeep(each_item,h)
     else:
         pass
 
 reader=csv.reader(file('C:/nx/networkx/sing.csv','rb'))
-
+#构图
 for row in reader:
         if reader.line_num ==1:
                 continue
@@ -27,7 +27,7 @@ for row in reader:
 weight_g = sorted(G.degree().values())
 for each_node in G.nodes():
          #找到邻居数大于设定值的节点i
-        if nx.degree(G)[each_node] >= weight_g[-2]:
+        if nx.degree(G)[each_node] >= weight_g[-1]:
                  #print G.neighbors(each_item)
                  howdeep(each_node,1)
                  '''
@@ -37,9 +37,6 @@ for each_node in G.nodes():
                         for each_neighbor in G.neighbors(each_one):
                                 DG.add_edge(each_neighbor,each_one)
 '''
-
-
-
 
 pos = nx.spring_layout(G)
 nx.draw_networkx(DG,pos,node_size=1000,font_size=8)
