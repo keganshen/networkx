@@ -1,3 +1,4 @@
+import networkx as nx
 
 # 关于图形的方法：
 nx.density(G)     #返回图形的密度
@@ -13,9 +14,11 @@ nx.all_neighbors(G,'tank')    #以iterator的形式返回一个节点的所有�
 nx.non_neighbors(G,'tank')    #以iterator的形式返回一个节点的所有非邻居
 nx.common_neighbors(G,'','') #以iterator的形式返回两个节点的公共邻居
 nx.nodes_iter(G)              #以iterator的形式返回所有节点
+g = nx.compose(G,DG)    #返会合并公共的node???
 
 #关于边的方法
 nx.edges(G)     #以列表的形式返回所有的边
 nx.number_of_edges(G)   #返回边数
 nx.non_edges(G)         #以iterator的形式返回所有不存在的边
 nx.edges_iter(G)        #以iterator的形式返回所有边
+
