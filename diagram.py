@@ -29,7 +29,7 @@ for each_node in G.nodes():
          #找到邻居数大于设定值的节点i
         if nx.degree(G)[each_node] >= weight_g[-1]:
                  #print G.neighbors(each_item)
-                 howdeep(each_node,1)
+                 howdeep(each_node,2)
                  '''
                  #生成与i直接连接的图
                 for each_one in G.neighbors(each_node):
