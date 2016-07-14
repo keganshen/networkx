@@ -19,7 +19,7 @@ print obj.count('a') #方法多态
 # human -> female -> girl
 class human(object):
     def __init__(self,name):
-        self.name = namewe
+        self.name = name
     def introduce(self):
         print '%s' " is a human" %(self.name)
 
