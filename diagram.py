@@ -1,7 +1,24 @@
 ﻿#coding=utf-8
+
+#python diagram -d 1 -r 1 (d:递归次数 r:选取前几名）
 import csv
 import networkx as nx
 import matplotlib.pyplot as plt
+import sys
+import getopt
+from getopt import GetoptError
+
+#getopt
+try:
+    opts,args = getopt.getopt(sys.argv[1:],'d:r:')
+except GetoptError:
+    sys.exit()
+for key,values in opts:
+    if key in ('-d',''):
+        deep = int(values)
+    if key in ('-r',''):
+        rang = int(values)
+
 
 G = nx.Graph()
 DG = nx.Graph()
@@ -27,9 +44,9 @@ for row in reader:
 weight_g = sorted(G.degree().values())
 for each_node in G.nodes():
          #找到邻居数大于设定值的节点i
-        if nx.degree(G)[each_node] >= weight_g[-1]:
+        if nx.degree(G)[each_node] >= weight_g[-rang]:
                  #print G.neighbors(each_item)
-                 howdeep(each_node,2)
+                 howdeep(each_node,deep)
                  '''
                  #生成与i直接连接的图
                 for each_one in G.neighbors(each_node):
